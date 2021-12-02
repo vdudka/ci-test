@@ -33,4 +33,4 @@ spec:
       - --context=/workspace
       - --skip-tls-verify-pull
       - --skip-tls-verify
-      - --destination=harbor-core.kube-system.svc.cluster.local/test/tekton-test:v2
+      - --destination=harbor-core.kube-system.svc.cluster.local/ci/tekton-test:v2

@@ -1,5 +1,5 @@
 FROM busybox
-WORKDIR /workspace/demo-repo
+WORKDIR /workspace
 RUN echo "New docker image build"
 COPY app .
-ENTRYPOINT [ "app/script.sh" ]
+ENTRYPOINT [ "demo-repo/app/script.sh" ]
