@@ -10,10 +10,13 @@ spec:
       secretName: harbor-default-robot
 
   taskRef:
-    name: task1
+    name: demo-task
 
   resources:
     inputs:
-      - name: repo
-        resourceRef:
-          name: arthurk-tekton-example
+      - name: demo-repo
+        resourceSpec:
+          type: git
+          params:
+            - name: url
+              value: https://github.com/vdudka/ci-test.git
