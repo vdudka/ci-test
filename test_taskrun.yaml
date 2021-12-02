@@ -1,13 +1,10 @@
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
-  generateName: task1-run-
+  # generateName: task1-run-
+  Name: demo-task-run
 spec:
   serviceAccountName: default
-  workspaces:
-  - name: dockerconfig
-    secret:
-      secretName: harbor-default-robot
 
   taskRef:
     name: demo-task

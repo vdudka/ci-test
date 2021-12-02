@@ -5,37 +5,20 @@ metadata:
 spec:
   resources:
     inputs:
-      - name: repo
+      - name: demo-repo
         type: git
 
-  workspaces:
-  - name: dockerconfig
-    description: Includes a docker 'config.json'
-    optional: true
-    mountPath: /tmp/.docker
-
   steps:
-  - name: check-config
+  - name: create-config
     image: busybox
-    workingDir: /workspace/
+    workingDir: /workspace
     script: |
       #!/bin/sh
-      pwd
+      echo "Create docker config file with Farbor admin account"
       mkdir -p /workspace/.docker/
-      #ln -s /tmp/.docker/.dockerconfigjson /workspace/.docker/config.json
-      #echo '{"auths": {"10.250.127.254:7443":{"auth": "YWRtaW5AaGFyYm9yLmxvY2FsOkhhcmJvcjEyMzQ1"}}}' > /workspace/.docker/config.json
       echo '{"auths": {"harbor-core.kube-system.svc.cluster.local":{"auth": "YWRtaW5AaGFyYm9yLmxvY2FsOkhhcmJvcjEyMzQ1"}}}' > /workspace/.docker/config.json
-      echo "-- ls -la /workspace/.docker/config.json"
-      ls -la /workspace/.docker/    || true
+      echo "docker config:"
       cat /workspace/.docker/config.json
-      cat <<END >> dockerfile
-      FROM busybox
-      WORKDIR /workspace/
-      RUN ls -la
-      END
-      cat dockerfile
-      echo '-- ls -la /etc/docker/'
-      #ls -la /etc/default/  || true
 
   - name: build-and-push
     workingDir: /kaniko/
@@ -44,8 +27,9 @@ spec:
       - name: DOCKER_CONFIG
         value: /workspace/.docker
     command:
+      - echo "Build image and push it to Harbor";
       - /kaniko/executor
-      - --dockerfile=dockerfile
+      - --dockerfile=Dockerfile
       - --context=/workspace
       - --skip-tls-verify-pull
       - --skip-tls-verify
