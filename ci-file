@@ -27,7 +27,6 @@ spec:
       - name: DOCKER_CONFIG
         value: /workspace/.docker
     command:
-      - echo "Build image and push it to Harbor";
       - /kaniko/executor
       - --dockerfile=Dockerfile
       - --context=/workspace
