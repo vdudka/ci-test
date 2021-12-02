@@ -19,7 +19,7 @@ spec:
       echo '{"auths": {"harbor-core.kube-system.svc.cluster.local":{"auth": "YWRtaW5AaGFyYm9yLmxvY2FsOkhhcmJvcjEyMzQ1"}}}' > /workspace/.docker/config.json
       echo "docker config:"
       cat /workspace/.docker/config.json
-      ls -la
+      ls -la demo-repo
 
   - name: build-and-push
     workingDir: /kaniko/
@@ -29,7 +29,7 @@ spec:
         value: /workspace/.docker
     command:
       - /kaniko/executor
-      - --dockerfile=ci-test/Dockerfile
+      - --dockerfile=demo-repo/Dockerfile
       - --context=/workspace
       - --skip-tls-verify-pull
       - --skip-tls-verify
