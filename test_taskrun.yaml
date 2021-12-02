@@ -1,7 +1,6 @@
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
-  # generateName: task1-run-
   name: demo-task-run
 spec:
   serviceAccountName: default
@@ -17,5 +16,3 @@ spec:
           params:
             - name: url
               value: https://github.com/vdudka/ci-test
-            - name: revision
-              value: main
