@@ -1,3 +1,16 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: demo-repo
+  # namespace: default
+spec:
+  type: git
+  params:
+    - name: url
+      value: https://github.com/vdudka/ci-test
+    - name: revision
+      value: add_basic_auth
+---
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
@@ -43,17 +56,3 @@ spec:
       - --skip-tls-verify-pull
       - --skip-tls-verify
       - --destination=$(params.registry-name)/$(params.registry-name)/$(params.image-name):$(params.image-tag)
-
----
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: demo-repo
-  # namespace: default
-spec:
-  type: git
-  params:
-    - name: url
-      value: https://github.com/vdudka/ci-test
-    - name: revision
-      value: add_basic_auth
