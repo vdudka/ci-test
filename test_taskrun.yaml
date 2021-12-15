@@ -8,11 +8,11 @@ spec:
   taskRef:
     name: demo-task
 
-  resources:
-    inputs:
-      - name: demo-repo
-        resourceSpec:
-          type: git
-          params:
-            - name: url
-              value: https://github.com/vdudka/ci-test
+  # resources:
+  #   inputs:
+  #     - name: demo-repo
+  #       resourceSpec:
+  #         type: git
+  #         params:
+  #           - name: url
+  #             value: https://github.com/vdudka/ci-test
