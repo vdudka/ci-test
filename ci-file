@@ -38,7 +38,7 @@ spec:
     workingDir: /workspace
     script: |
       #!/bin/sh
-      echo "Create docker config file with Farbor admin account"
+      echo "Create docker config file with Harbor admin account"
       mkdir -p /workspace/.docker/
       echo '{"auths": {"harbor-core.kube-system.svc.cluster.local":{"auth": "YWRtaW5AaGFyYm9yLmxvY2FsOkhhcmJvcjEyMzQ1"}}}' > /workspace/.docker/config.json
       ls -la demo-repo/
