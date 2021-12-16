@@ -5,14 +5,11 @@ metadata:
 spec:
   serviceAccountName: default
 
+  params:
+  - name:   git-repositoru-url
+    value:  https://github.com/vdudka/ci-test
+  - name:   git-image
+    value:  registry-1.docker.io/certascale/ci-tool:3.7.1
+
   taskRef:
     name: demo-task
-
-  resources:
-    inputs:
-      - name: demo-repo
-        resourceSpec:
-          type: git
-          params:
-            - name: url
-              value: https://github.com/vdudka/ci-test
