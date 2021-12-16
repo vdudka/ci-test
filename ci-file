@@ -18,7 +18,7 @@ spec:
     # Output registry params
     - name: registry-name
       type: string
-      default: harbor-core.kube-system.svc.cluster.local/ci
+      default: harbor-core.kube-system.svc.cluster.local/ci-test
     - name: image-name
       type: string
       default: tekton-demo
