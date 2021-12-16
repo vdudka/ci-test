@@ -31,14 +31,17 @@ spec:
     image: $(params.git-image)
     workingDir: /workspace
     env:
-      - name: GIT
-        value: /workspace/.docker
+      - name: GIT_URL
+        value: $(params.git-repo-url)
+      - name: GIT_HOME
+        value: $(params.git-home)
     script: |
       #!/usr/bin/env bash
-      # Clean distanation directory
-      [ -a $(params.git-home) ] && rm -rf $(params.git-home)
-      mkdir -p $(params.git-home) && cd $(params.git-home)
-      git clone $(params.git-repo-url) .
+      [ -a ${GIT_HOME} ] && rm -rf ${GIT_HOME}
+      mkdir -p ${GIT_HOME} && cd ${GIT_HOME}
+      pwd
+      git clone "${GIT_URL}" .
+      ls -la
 
   - name: create-config
     image: busybox
