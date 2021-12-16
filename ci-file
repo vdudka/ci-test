@@ -30,12 +30,14 @@ spec:
   - name: git-clone
     image: $(params.git-image)
     workingDir: /workspace
+    env:
+      - name: GIT
+        value: /workspace/.docker
     script: |
-      #!/bin/sh
+      #!/usr/bin/env bash
       # Clean distanation directory
       [ -a $(params.git-home) ] && rm -rf $(params.git-home)
-      mkdir -p $(params.git-home)
-      cd $(params.git-home)
+      mkdir -p $(params.git-home) && cd $(params.git-home)
       git clone $(params.git-repo-url) .
 
   - name: create-config
@@ -49,8 +51,8 @@ spec:
       ls -la demo-repo/
 
   - name: build-and-push
-    workingDir: /workspace/
     image: gcr.io/kaniko-project/executor:v1.7.0
+    workingDir: /workspace/
     env:
       - name: DOCKER_CONFIG
         value: /workspace/.docker
