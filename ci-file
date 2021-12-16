@@ -39,9 +39,7 @@ spec:
       #!/usr/bin/env bash
       [ -a ${GIT_HOME} ] && rm -rf ${GIT_HOME}
       mkdir -p ${GIT_HOME} && cd ${GIT_HOME}
-      pwd
       git clone "${GIT_URL}" .
-      ls -la
 
   - name: create-config
     image: busybox
@@ -51,9 +49,6 @@ spec:
       echo "Create docker config file with Harbor admin account"
       mkdir -p /workspace/.docker/
       echo '{"auths": {"harbor-core.kube-system.svc.cluster.local":{"auth": "YWRtaW5AaGFyYm9yLmxvY2FsOkhhcmJvcjEyMzQ1"}}}' > /workspace/.docker/config.json
-      ls -la demo-repo/
-      ls -l /workspace/.docker/config.json
-      cat /workspace/.docker/config.json
 
   - name: build-and-push
     image: gcr.io/kaniko-project/executor:v1.7.0
