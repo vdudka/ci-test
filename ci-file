@@ -12,10 +12,10 @@ spec:
     - name: git-image
       type: string
       default: registry-1.docker.io/certascale/ci-tool:3.7.1
-    # Output registry params
     - name: git-home
       type: string
       default: demo-repo
+    # Output registry params
     - name: registry-name
       type: string
       default: harbor-core.kube-system.svc.cluster.local/ci
