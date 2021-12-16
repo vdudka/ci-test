@@ -6,7 +6,7 @@ spec:
   serviceAccountName: default
 
   params:
-  - name:   git-repositoru-url
+  - name:   git-repo-url
     value:  https://github.com/vdudka/ci-test
   - name:   git-image
     value:  registry-1.docker.io/certascale/ci-tool:3.7.1
