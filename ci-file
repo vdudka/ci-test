@@ -52,6 +52,8 @@ spec:
       mkdir -p /workspace/.docker/
       echo '{"auths": {"harbor-core.kube-system.svc.cluster.local":{"auth": "YWRtaW5AaGFyYm9yLmxvY2FsOkhhcmJvcjEyMzQ1"}}}' > /workspace/.docker/config.json
       ls -la demo-repo/
+      ls -l /workspace/.docker/config.json
+      cat /workspace/.docker/config.json
 
   - name: build-and-push
     image: gcr.io/kaniko-project/executor:v1.7.0
