@@ -8,23 +8,32 @@ spec:
     - name: git-repo-url
       type: string
       default: https://github.com/vdudka/ci-test
-      description: Git repo URL
+      description: Git repo URL with code
+    # Git utility image name
     - name: git-image
       type: string
       default: registry-1.docker.io/certascale/ci-tool:3.7.1
+      description: Image with git and some other developers/build tools
+    # Git repo home folder
     - name: git-home
       type: string
       default: demo-repo
+      description: Home directory for git repo
     # Output registry params
     - name: registry-name
       type: string
       default: harbor-core.kube-system.svc.cluster.local/ci-test
+      description: Registry name
+    # Outgoing image name
     - name: image-name
       type: string
       default: tekton-demo
+      description: Custom image name
+    # Outgoing image tag
     - name: image-tag
       type: string
       default: v1
+      description: Image tag
 
   steps:
   - name: git-clone
