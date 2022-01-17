@@ -39,6 +39,8 @@ spec:
       #!/usr/bin/env bash
       [ -a ${GIT_HOME} ] && rm -rf ${GIT_HOME}
       mkdir -p ${GIT_HOME} && cd ${GIT_HOME}
+      echo "Step git-clone"
+      echo "Start cloning repo ${GIT_URL}"
       git clone "${GIT_URL}" .
 
   - name: create-config
@@ -46,7 +48,8 @@ spec:
     workingDir: /workspace
     script: |
       #!/bin/sh
-      echo "Create docker config file with Harbor admin account"
+      echo "Step create-config"
+      echo "Create docker config file for Harbor registry."
       mkdir -p /workspace/.docker/
       echo '{"auths": {"harbor-core.kube-system.svc.cluster.local":{"auth": "YWRtaW5AaGFyYm9yLmxvY2FsOkhhcmJvcjEyMzQ1"}}}' > /workspace/.docker/config.json
 
